@@ -411,9 +411,45 @@ footer a {
 footer a:hover {
     color: var(--secondary-color);
 }
+.footer-links ul { 
+    list-style-type: disc;      /* Mantiene los puntitos (discos predeterminados */
+    list-style-position: inside; /* ¡CLAVE! pega el punto al texto del li */
+    max-width: fit-content; 
+    /* Centra el bloque UL si 'max-width' está establecido. */
+    margin-left: auto;     
+    margin-right: auto;
+    text-align: left; /*alinear los puntos/viñetas en linea recta*/
+}
+.whatsapp-flotante {
+    position: fixed; /* Fundamental para que flote y siga el scroll */
+    width: 60px;     /* Ancho del botón */
+    height: 60px;    /* Alto del botón */
+    top: 120px;       /* Distancia desde la parte superior */
+    right: 20px;     /* Distancia desde la parte derecha */
+    background-color: #25d366; /* Color de fondo de WhatsApp */
+    color: #FFF;     /* Color del ícono (blanco) */
+    border-radius: 50%; /* Para hacerlo circular */
+    text-align: center; /* Centra el ícono horizontalmente si es necesario */
+    font-size: 38px; /* Tamaño del ícono de Font Awesome */
+    line-height: 60px; /* Ayuda a centrar verticalmente el ícono de Font Awesome */
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.3); /* Sombra suave */
+    z-index: 1030;   /* Asegura que esté por encima de otros elementos (ajusta si es necesario, tus floating-controls podrían tener un z-index también) */
+    display: flex; /* Opcional, pero útil para centrar perfectamente */
+    align-items: center; /* Centra el ícono verticalmente */
+    justify-content: center; /* Centra el ícono horizontalmente */
+    text-decoration: none; /* Quita el subrayado del enlace */
+}
 
+.whatsapp-flotante:hover {
+    background-color: #1DA851; /* Un verde un poco más oscuro al pasar el mouse */
+    color: #FFF;
+}
 
-
+/* Es posible que necesites ajustar el tamaño del ícono específicamente */
+.whatsapp-flotante .fab.fa-whatsapp {
+    font-size: 35px; /* O el tamaño que se vea mejor dentro del círculo */
+    /* Si usaste display: flex arriba, line-height no es tan crucial */
+}
 
 /* Floating Buttons */
 #scroll-top-btn, #dark-mode-toggle {
