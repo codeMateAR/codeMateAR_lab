@@ -123,6 +123,7 @@ p { margin-bottom: 1rem; color: var(--text-color-medium); }
     z-index: 1001;
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
+
 #top-bar a { color: #e0e0e0; }
 #top-bar a:hover { color: var(--accent-color); }
 .top-bar-content { display: flex; justify-content: space-between; align-items: center; height: 100%; }
