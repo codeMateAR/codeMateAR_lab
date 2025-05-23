@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Translations Data (CORREGIDO para incluir HTML de iconos fas fa-user) ---
     const translations = {
         en: {
-            pageTitle: "Dev Vision X1 - Custom Web Solutions",
+            pageTitle: "codeMate AR - Custom Web Solutions",
             topBarPhone: "+1 234 567 890",
-            topBarEmail: "info@DevVisionx1.com",
+            topBarEmail: "info@codeMateAR.com",
             topBarClientArea: "<i class=\"fas fa-user-circle\"></i> Client Area", // Icono incluido
             navHome: "Home",
             navServices: "Services",
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             footerContactUs: "Contact Us",
             footerAddress: "", // Icono está en el HTML, no aquí
             footerPhone: "+1 234 567 890", // Icono está en el HTML, no aquí
-            footerEmail: "info@devvisionx1.com", // Icono está en el HTML, no aquí
+            footerEmail: "info@codeMateAR.com", // Icono está en el HTML, no aquí
             footerRights: "All Rights Reserved.",
             footerPrivacy: "Privacy Policy",
             footerTerms: "Terms of Service",
@@ -87,9 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
             socialLinkedIn: "LinkedIn", // aria-label
         },
         es: {
-            pageTitle: "Dev Vision X1 - Soluciones Web Personalizadas",
+            pageTitle: "codeMate AR - Soluciones Web Personalizadas",
             topBarPhone: "+1 234 567 890",
-            topBarEmail: "info@devvisionx1.com",
+            topBarEmail: "info@codeMateAR.com",
             topBarClientArea: "<i class=\"fas fa-user-circle\"></i> Área de Cliente", // Icono incluido
             navHome: "Inicio",
             navServices: "Servicios",
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             footerContactUs: "Contáctanos",
             footerAddress: "", // Icono está en el HTML
             footerPhone: "+1 234 567 890", // Icono está en el HTML
-            footerEmail: "info@devvisionx1.com", // Icono está en el HTML
+            footerEmail: "info@codeMateAR.com", // Icono está en el HTML
             footerRights: "Todos los Derechos Reservados.",
             footerPrivacy: "Política de Privacidad",
             footerTerms: "Términos de Servicio",
