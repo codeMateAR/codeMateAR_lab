@@ -1,0 +1,19 @@
+# Dependencies
+/node_modules
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Environment variables
+.env
+
+# IDEs and editors
+.vscode/
