@@ -1,0 +1,62 @@
+/* Estilos específicos para el Dashboard */
+
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-item {
+    background-color: #f9fafb;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    transition: box-shadow 0.3s;
+}
+
+.project-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.project-item h3 {
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.project-item p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.status-developing {
+    color: #ffa000;
+    font-weight: 500;
+}
+
+.status-completed {
+    color: #388e3c;
+    font-weight: 500;
+}
+
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 20px;
+    margin-bottom: 1rem;
+}
+
+.progress {
+    background-color: var(--secondary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
