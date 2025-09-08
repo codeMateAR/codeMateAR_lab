@@ -18,36 +18,26 @@
 </head>
 <body>
 
-    <div id="top-bar">
-        <div class="container top-bar-content">
-            <div class="contact-info">
-                <span><i class="fas fa-phone-alt"></i> <a href="tel:+543413 123456" data-key="">+54 3413 123456</a></span>
-                <span><i class="fas fa-envelope"></i> <a href="mailto:dev.vision.x1@gmail.com" data-key="">info@codeMateAR.com</a></span>
-            </div>
-            <div class="user-area">
-                <a href="customers/client-area.html" data-key="topBarClientArea"><i class="fas fa-user-circle"></i> Client Area</a>
-            </div>
-        </div>
-    </div>
-
     <header id="main-header">
         <div class="container header-container">
             <a href="#hero" class="logo-link">
                 <div class="logo">
                     <img src="assets/images/logo.png" alt="" id="logo-img">
-                    <span>codeMate AR</span>
+                    <span class="logo-text">codeMate AR</span>
                 </div>
             </a>
-            <nav>
-                <ul>
-                    <li><a href="#hero" data-key="navHome">Home</a></li>
-                    <li><a href="#services" data-key="navServices">Services</a></li>
-                    <li><a href="#projects" data-key="navProjects">Projects</a></li>
-                    <li><a href="#about" data-key="navAbout">About</a></li>
-                    <li><a href="#contact" data-key="navContact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="header-controls-placeholder"></div> <!-- Placeholder to balance flexbox if needed -->
+            <div class="nav-wrapper">
+                <nav>
+                    <ul>
+                        <li><a href="#hero" data-key="navHome">Home</a></li>
+                        <li><a href="#services" data-key="navServices">Services</a></li>
+                        <li><a href="#projects" data-key="navProjects">Projects</a></li>
+                        <li><a href="#about" data-key="navAbout">About</a></li>
+                        <li><a href="#contact" data-key="navContact">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="customers/login.html" class="cta-button-outline header-cta" data-key="topBarClientArea"><i class="fas fa-user-circle"></i> Client Area</a>
+            </div>
             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
@@ -89,81 +79,37 @@
     </section>
 
     <main>
-        <section id="services" class="section service-section">
-            <div class="container service-layout">
-                <div class="service-image">
-                    <img src="assets/images/web application dvelopment.png" alt="Web Application Development">
-                </div>
-                <div class="service-content">
-                    <h2 data-key="service1Title">Custom Web Applications</h2>
-                    <p data-key="service1Desc1">We design and develop robust web applications tailored to your specific business needs. From complex enterprise platforms to intuitive user portals, we deliver scalable and secure solutions.</p>
-                    <p data-key="service1Desc2">Utilizing modern technologies like .NET Core, React, and Node.js, we ensure high performance and maintainability.</p>
-                    <a href="#contact" class="cta-button-outline" data-key="service1Cta">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <section class="section service-section alt-bg">
-            <div class="container service-layout service-layout-reverse">
-                <div class="service-image">
-                    <img src="assets/images/apiDevelopment.png" alt="API Development">
-                </div>
-                <div class="service-content">
-                    <h2 data-key="service2Title">Software Development & Integration</h2>
-                    <p data-key="service2Desc1">Our team develops powerful and secure software solutions that enable seamless communication between your applications and third-party services. We focus on efficient data exchange.</p>
-                    <p data-key="service2Desc2">Whether you need to integrate with payment gateways, social media, or internal systems, we provide reliable API solutions.</p>
-                    <a href="#contact" class="cta-button-outline" data-key="service2Cta">Discuss Your API <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <section class="section service-section">
-            <div class="container service-layout">
-                <div class="service-image">
-                    <img src="assets/images/dataBasesSolutions.png" alt="Database Solutions">
-                </div>
-                <div class="service-content">
-                    <h2 data-key="service3Title">Database Solutions & Optimization</h2>
-                    <p data-key="service3Desc1">We offer expert database administration for Microsoft SQL Server, including design, optimization, and maintenance. Ensure your data is secure, accessible, and performing optimally.</p>
-                    <p data-key="service3Desc2">From schema design to query tuning and backup strategies, we cover all aspects of database management.</p>
-                    <a href="#contact" class="cta-button-outline" data-key="service3Cta">Optimize Your Database <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <section id="technologies" class="technologies-section alt-bg">
+        <section id="services" class="section">
             <div class="container">
-                <h2 data-key="techTitle">Technologies We Use</h2>
-                <div class="tech-logos">
-                
-                <i class="devicon-dot-net-core-plain colored" title=".NET Core"></i>
-                <i class="devicon-csharp-plain colored" title="C#"></i>
-                <i class="devicon-microsoftsqlserver-plain colored" title="SQL Server"></i>
-                <i class="devicon-mysql-plain colored" title="MySQL"></i>
-                <i class="devicon-react-original colored" title="React"></i>
-                <i class="devicon-javascript-plain colored" title="JavaScript"></i>
-                <i class="devicon-html5-plain colored" title="HTML5"></i>
-                <i class="devicon-css3-plain colored" title="CSS3"></i>
-                <i class="devicon-flask-original colored" title="Flask"></i>
-                <i class="devicon-sqlite-plain colored" title="SQLite"></i>
-                <i class="devicon-vuejs-plain colored" title="Vue.js"></i>
-                <i class="devicon-python-plain colored" title="Python"></i>
-                <i class="devicon-sqlalchemy-plain colored" title="SQLAlchemy"></i>
-
-                <img src="assets/images/Mp.png" alt="Mercado Pago" class="tech-logo-img" title="Mercado Pago SDK">
-                <img src="assets/images/supabase.png" alt="Mercado Pago" class="tech-logo-img" title="Mercado Pago SDK">
-
-
-                    <!-- <img src="https://via.placeholder.com/120x60/f0f0f0/333333?text=.NET" alt=".NET Core">
-                    <img src="https://via.placeholder.com/120x60/f0f0f0/333333?text=C%23" alt="C#">
-                    <img src="https://via.placeholder.com/120x60/f0f0f0/333333?text=SQL+Server" alt="SQL Server">
-                    <img src="https://via.placeholder.com/120x60/f0f0f0/333333?text=Docker" alt="Docker">
-                    <img src="https://via.placeholder.com/120x60/f0f0f0/333333?text=React" alt="React">
-                    <img src="https://via.placeholder.com/120x60/f0f0f0/333333?text=JavaScript" alt="JavaScript">
-                    <img src="https://via.placeholder.com/120x60/f0f0f0/333333?text=HTML5" alt="HTML5">
-                    <img src="https://via.placeholder.com/120x60/f0f0f0/333333?text=CSS3" alt="CSS3"> -->
-                
+                <h2 data-key="servicesTitle"><i class="fas fa-cogs"></i> Our Services</h2>
+                <p class="section-intro" data-key="servicesIntro">We offer a complete range of digital solutions to transform your ideas into reality. Discover how we can help you.</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3 data-key="serviceCard1Title">Custom Web Development</h3>
+                        <p data-key="serviceCard1Desc">We create robust websites and applications, from intuitive portals to complex platforms, tailored to your needs.</p>
+                        <a href="#contact" class="service-link" data-key="serviceLearnMore">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-plug"></i>
+                        <h3 data-key="serviceCard2Title">API & Integrations</h3>
+                        <p data-key="serviceCard2Desc">We connect your systems. We develop secure APIs to integrate payment gateways, CRMs, and third-party services.</p>
+                        <a href="#contact" class="service-link" data-key="serviceLearnMore">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-cubes"></i>
+                        <h3 data-key="serviceCard3Title">Software Solutions</h3>
+                        <p data-key="serviceCard3Desc">We transform your ideas into functional software. We develop desktop and enterprise solutions to optimize your operations.</p>
+                        <a href="#contact" class="service-link" data-key="serviceLearnMore">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h3 data-key="serviceCard4Title">Optimization & Maintenance</h3>
+                        <p data-key="serviceCard4Desc">We ensure your applications and databases run optimally, securely, and scalably over time.</p>
+                        <a href="#contact" class="service-link" data-key="serviceLearnMore">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
+            </div>
         </section>
 
         <section id="projects" class="section">
@@ -176,7 +122,7 @@
                         <div class="project-info">
                             <h3 data-key="project1Title">Project Alpha</h3>
                             <p data-key="project1Desc">An innovative web application to streamline internal workflows and boost productivity.</p>
-                            <a href="#" class="project-link" data-key="projectLinkView">View Project <i class="fas fa-external-link-alt"></i></a>
+                            <a href="#contact" class="project-link" data-key="projectLinkView">View Project <i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
@@ -184,7 +130,7 @@
                         <div class="project-info">
                             <h3 data-key="project2Title">Project Beta</h3>
                             <p data-key="project2Desc">Custom e-commerce platform that enables comprehensive product management, intuitive shopping cart management, and secure payment processing through the Mercado Pago API. The system includes user authentication and detailed order tracking.</p>
-                            <a href="#" class="project-link" data-key="projectLinkView">View Project <i class="fas fa-external-link-alt"></i></a>
+                            <a href="#contact" class="project-link" data-key="projectLinkView">View Project <i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                     <!--<div class="project-card">
@@ -221,38 +167,86 @@
                      </div>
                  </div>
             </div>
+
+            <!-- Tech logos section is now outside the main container to allow it to be wider -->
+            <h2 data-key="techTitle" class="tech-title-within-about">Technologies We Use</h2>
+            <div class="tech-logos-container">
+                 <div class="tech-logos">
+                     <i class="devicon-dot-net-core-plain colored" title=".NET Core"></i>
+                     <i class="devicon-csharp-plain colored" title="C#"></i>
+                     <i class="devicon-microsoftsqlserver-plain colored" title="SQL Server"></i>
+                     <i class="devicon-mysql-plain colored" title="MySQL"></i>
+                     <i class="devicon-react-original colored" title="React"></i>
+                     <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+                     <i class="devicon-html5-plain colored" title="HTML5"></i>
+                     <i class="devicon-css3-plain colored" title="CSS3"></i>
+                     <i class="devicon-flask-original colored" title="Flask"></i>
+                     <i class="devicon-sqlite-plain colored" title="SQLite"></i>
+                     <i class="devicon-vuejs-plain colored" title="Vue.js"></i>
+                     <i class="devicon-python-plain colored" title="Python"></i>
+                     <i class="devicon-sqlalchemy-plain colored" title="SQLAlchemy"></i>
+                     <img src="assets/images/Mp.png" alt="Mercado Pago" class="tech-logo-img" title="Mercado Pago SDK">
+                     <img src="assets/images/supabase.png" alt="Supabase" class="tech-logo-img" title="Supabase">
+                 </div>
+            </div>
         </section>
 
          <section id="contact" class="section">
             <div class="container">
                 <h2 data-key="contactTitle"><i class="fas fa-envelope-open-text"></i> Get in Touch</h2>
                 <p class="section-intro" data-key="contactIntro">Ready to start your next project or have a question? We'd love to hear from you!</p>
-                <form id="contact-form" class="contact-form">
-                    <div class="form-group">
-                        <label for="name" data-key="contactFormName">Your Name</label>
-                        <input type="text" id="name" name="name">
-                        
+                
+                <div class="contact-wrapper">
+                    <!-- Columna de Información de Contacto -->
+                    <div class="contact-info-col">
+                        <div class="contact-info-block">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4 data-key="contactLocation">Location</h4>
+                                <p data-key="footerAddress">Av. Siempreviva 123, Sprinfield</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-block">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4 data-key="contactEmailLabel">Email</h4>
+                                <p><a href="mailto:info@codeMateAR.com" data-key="footerEmail">info@codeMateAR.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-info-block">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4 data-key="contactPhoneLabel">Phone</h4>
+                                <p><a href="https://wa.me/5493411234567?text=Hola,%20estoy%20interesado%20en%20sus%20servicios." target="_blank" rel="noopener noreferrer" data-key="footerPhone">+1 234 567 890</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-info-block">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <h4 data-key="contactGithubLabel">GitHub</h4>
+                                <p><a href="https://github.com/codeMateAR" target="_blank" rel="noopener noreferrer">github.com/codeMateAR</a></p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email" data-key="contactFormEmail">Your Email</label>
-                        <input type="email" id="email" name="email">
-                        
+
+                    <!-- Columna del Formulario -->
+                    <div class="contact-form-col">
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" class="form-input" placeholder=" " required>
+                                <label for="name" class="form-label" data-key="contactFormName">Your Name</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" class="form-input" placeholder=" " required>
+                                <label for="email" class="form-label" data-key="contactFormEmail">Your Email</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" class="form-input" rows="5" placeholder=" " required></textarea>
+                                <label for="message" class="form-label" data-key="contactFormMessage">Your Message</label>
+                            </div>
+                            <button type="submit" class="cta-button" data-key="contactFormSubmit">Send Message <i class="fas fa-paper-plane"></i></button>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="message" data-key="contactFormMessage">Your Message</label>
-                        <textarea id="message" name="message" rows="5"></textarea>
-                        
-                    </div>
-                    <button type="submit" class="cta-button" data-key="contactFormSubmit">Send Message</button>
-                </form>
-                <div class="contact-direct-methods">
-                    <p data-key="contactOrConnect">Or connect with us directly:</p>
-                    <a href="https://github.com/codeMateAR" target="_blank" class="contact-button-alt github" data-key="contactGithub">
-                        <i class="fab fa-github"></i> Our GitHub
-                    </a>
-                    <a href="mailto:i@devVisionx.com" class="contact-button-alt email" data-key="contactEmail">
-                        <i class="fas fa-envelope"></i> Email Us
-                    </a>
                 </div>
             </div>
         </section>
@@ -273,24 +267,29 @@
                     <a href="#" aria-label="LinkedIn" data-key="socialLinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <p>
             <div class="footer-column footer-links">
                 <h4 data-key="footerQuickLinks">Quick Links</h4>
                 <ul>
-                    <li><a href="#about" data-key="navAbout">About Us</a></li>
+                    <li><a href="#hero" data-key="navHome">Home</a></li>
                     <li><a href="#services" data-key="navServices">Services</a></li>
                     <li><a href="#projects" data-key="navProjects">Projects</a></li>
-                    <li><a href="#" data-key="footerBlog">Blog</a></li>
+                    <li><a href="#about" data-key="navAbout">About</a></li>
                     <li><a href="#contact" data-key="navContact">Contact</a></li>
                 </ul>
-            </div></p>
-            <p>
+            </div>
             <div class="footer-column footer-contact-info">
                 <h4 data-key="footerContactUs">Contact Us</h4>
-                <p><i class="fas fa-map-marker-alt"></i> <span data-key="">Av. Siempreviva 123, Sprinfield</span></p>
-                <p><i class="fas fa-phone"></i> <a href="tel:+54 3413 123456" data-key="">+54 3413 1234566666</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:dev.vision.x1@gmail.com" data-key="">info@codeMateAR.com</a></p>
-            </div></p>
+                <address>
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <a href="https://www.google.com/maps/search/" target="_blank" rel="noopener noreferrer" class="address-link">
+                            <span data-key="footerAddress">Av. Siempreviva 123, Sprinfield</span>
+                        </a>
+                    </p>
+                    <p><i class="fas fa-phone"></i> <a href="https://wa.me/5493411234567?text=Hola,%20estoy%20interesado%20en%20sus%20servicios." target="_blank" rel="noopener noreferrer" data-key="footerPhone">+1 234 567 890</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="#contact" data-key="footerEmail">info@codeMateAR.com</a></p>
+                </address>
+            </div>
         </div>
         <div class="footer-bottom">
             <div class="container footer-bottom-content">
@@ -300,8 +299,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/0800123456?text=Hola%20%20estoy%20interesado%20en%20sus%20servicios,%20deseo%20obtener%20más%20información." class="whatsapp-flotante" target="_blank"><i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/5493411234567?text=Hola,%20estoy%20interesado%20en%20sus%20servicios." class="whatsapp-flotante" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
 
     <div class="floating-controls">
         <button id="language-toggle" aria-label="Switch language">

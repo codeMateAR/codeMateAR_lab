@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const mainHeader = document.getElementById('main-header');
-    const nav = mainHeader.querySelector('nav');
+    const navWrapper = mainHeader.querySelector('.nav-wrapper');
+    const nav = navWrapper.querySelector('nav');
     const mobileNavToggle = mainHeader.querySelector('.mobile-nav-toggle');
     const themeToggleButton = document.getElementById('theme-toggle');
     const languageToggleButton = document.getElementById('language-toggle');
@@ -13,8 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const translations = {
         en: {
             pageTitle: "codeMate AR - Custom Web Solutions",
-            topBarPhone: "+1 234 567 890",
-            topBarEmail: "info@codeMateAR.com",
             topBarClientArea: "<i class=\"fas fa-user-circle\"></i> Client Area", // Icono incluido
             navHome: "Home",
             navServices: "Services",
@@ -30,27 +29,26 @@ document.addEventListener('DOMContentLoaded', () => {
             stat2Desc: "Happy Clients",
             stat3Val: "1000+",
             stat3Desc: "Working Hours",
-            stat4Val: "10k+",
+            stat4Val: "1M+",
             stat4Desc: "Lines of Code",
-            service1Title: "Custom Web Applications",
-            service1Desc1: "We design and develop robust web applications tailored to your specific business needs. From complex enterprise platforms to intuitive user portals, we deliver scalable and secure solutions.",
-            service1Desc2: "Utilizing modern technologies like .NET Core, React, and more, we ensure high performance and maintainability.",
-            service1Cta: "Learn More <i class=\"fas fa-arrow-right\"></i>",
-            service2Title: "Software Development & Integration",
-            service2Desc1: "Our team develops powerful and secure software solutions that enable seamless communication between your applications and third-party services. We focus on efficient data exchange.",
-            service2Desc2: "Plus, whether you need to integrate with payment gateways, social networks, or internal systems, we offer reliable API solutions.",
-            service2Cta: "Discuss Your IDEA <i class=\"fas fa-arrow-right\"></i>",
-            service3Title: "Database Solutions & Optimization",
-            service3Desc1: "We offer expert database administration for Microsoft SQL Server, including design, optimization, and maintenance. Ensure your data is secure, accessible, and performing optimally.",
-            service3Desc2: "From schema design to query tuning and backup strategies, we cover all aspects of database management.",
-            service3Cta: "Optimize Your Database <i class=\"fas fa-arrow-right\"></i>",
+            servicesTitle: "<i class=\"fas fa-cogs\"></i> Our Services",
+            servicesIntro: "We offer a complete range of digital solutions to transform your ideas into reality. Discover how we can help you.",
+            serviceCard1Title: "Custom Web Development",
+            serviceCard1Desc: "We create robust websites and applications, from intuitive portals to complex platforms, tailored to your needs.",
+            serviceCard2Title: "API & Integrations",
+            serviceCard2Desc: "We connect your systems. We develop secure APIs to integrate payment gateways, CRMs, and third-party services.",
+            serviceCard3Title: "Software Solutions",
+            serviceCard3Desc: "We transform your ideas into functional software. We develop desktop and enterprise solutions to optimize your operations.",
+            serviceCard4Title: "Optimization & Maintenance",
+            serviceCard4Desc: "We ensure your applications and databases run optimally, securely, and scalably over time.",
+            serviceLearnMore: "Learn More <i class=\"fas fa-arrow-right\"></i>",
             techTitle: "Technologies We Use",
             projectsTitle: "<i class=\"fas fa-tasks\"></i> Our Projects", // Icono incluido
-            projectsIntro: "Here are some of the projects we're proud of. (More coming soon!)",
-            project1Title: "Project Digitalization 4.0",
-            project1Desc: "An innovative web application to optimize internal workflows and increase productivity \"Industrial Digitalization 4.0.\"",
-            project2Title: "Personalized Online Store Project + e-commerce",
-            project2Desc: "Custom e-commerce platform that enables comprehensive product management, intuitive shopping cart management, and secure payment processing through the Mercado Pago API. The system includes user authentication and detailed order tracking.",
+            projectsIntro: "A showcase of our craftsmanship. Each project reflects our dedication to building robust, scalable, and user-centric applications.",
+            project1Title: "Industrial Digitalization 4.0",
+            project1Desc: "Innovative web application to optimize internal workflows and boost productivity in Industry 4.0.",
+            project2Title: "Custom E-commerce Store",
+            project2Desc: "E-commerce platform with product management, shopping cart, and secure payments via Mercado Pago API.",
             project3Title: "Project Gamma",
             project3Desc: "Database optimization and migration for a large e-commerce platform, improving performance by 60%.",
             projectLinkView: "View Project <i class=\"fas fa-external-link-alt\"></i>",
@@ -68,14 +66,14 @@ document.addEventListener('DOMContentLoaded', () => {
             contactFormEmail: "Your Email", // Placeholder
             contactFormMessage: "Your Message", // Placeholder
             contactFormSubmit: "Send Message",
-            contactOrConnect: "Or connect with us directly:",
-            contactGithub: "<i class=\"fab fa-github\"></i> Our GitHub",
-            contactEmail: "<i class=\"fas fa-envelope\"></i> Email Us",
+            contactLocation: "Location",
+            contactEmailLabel: "Email",
+            contactPhoneLabel: "Phone",
+            contactGithubLabel: "GitHub",
             footerAboutText: "Crafting digital excellence through innovative code and dedicated support. Let's build the future together.",
             footerQuickLinks: "Quick Links",
-            footerBlog: "Blog",
             footerContactUs: "Contact Us",
-            footerAddress: "", // Icono está en el HTML, no aquí
+            footerAddress: "Av. Siempreviva 123, Sprinfield", // Icono está en el HTML, no aquí
             footerPhone: "+1 234 567 890", // Icono está en el HTML, no aquí
             footerEmail: "info@codeMateAR.com", // Icono está en el HTML, no aquí
             footerRights: "All Rights Reserved.",
@@ -88,8 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         es: {
             pageTitle: "codeMate AR - Soluciones Web Personalizadas",
-            topBarPhone: "+1 234 567 890",
-            topBarEmail: "info@codeMateAR.com",
             topBarClientArea: "<i class=\"fas fa-user-circle\"></i> Área de Cliente", // Icono incluido
             navHome: "Inicio",
             navServices: "Servicios",
@@ -105,27 +101,26 @@ document.addEventListener('DOMContentLoaded', () => {
             stat2Desc: "Clientes Satisfechos",
             stat3Val: "1000+",
             stat3Desc: "Horas de trabajo",
-            stat4Val: "10k+",
+            stat4Val: "1M+",
             stat4Desc: "Líneas de Código",
-            service1Title: "Aplicaciones Web Personalizadas",
-            service1Desc1: "Diseñamos y desarrollamos aplicaciones web robustas adaptadas a tus necesidades específicas. Desde plataformas empresariales complejas hasta portales de usuario intuitivos, entregamos soluciones escalables y seguras.",
-            service1Desc2: "Utilizando tecnologías modernas como .NET Core, React y más, aseguramos alto rendimiento y mantenibilidad.",
-            service1Cta: "Saber Más <i class=\"fas fa-arrow-right\"></i>",
-            service2Title: "Desarrollo e Integración de Software",
-            service2Desc1: "Nuestro equipo desarrolla soluciones de software potentes y seguras que facilitan una comunicación fluida entre sus aplicaciones y servicios de terceros. Nos centramos en el intercambio eficiente de datos.",
-            service2Desc2: "Ademas, ya sea que necesite integrarse con pasarelas de pago, redes sociales o sistemas internos, ofrecemos soluciones API confiables.",
-            service2Cta: "Discute tu IDEA <i class=\"fas fa-arrow-right\"></i>",
-            service3Title: "Soluciones y Optimización de Bases de Datos",
-            service3Desc1: "Ofrecemos administración experta de bases de datos para Microsoft SQL Server, incluyendo diseño, optimización y mantenimiento. Asegura que tus datos estén seguros, accesibles y con un rendimiento óptimo.",
-            service3Desc2: "Desde el diseño de esquemas hasta la optimización de consultas y estrategias de respaldo, cubrimos todos los aspectos de la gestión de bases de datos.",
-            service3Cta: "Optimiza tu Base de Datos <i class=\"fas fa-arrow-right\"></i>",
+            servicesTitle: "<i class=\"fas fa-cogs\"></i> Nuestros Servicios",
+            servicesIntro: "Ofrecemos una gama completa de soluciones digitales para transformar tus ideas en realidad. Descubre cómo podemos ayudarte.",
+            serviceCard1Title: "Desarrollo Web a Medida",
+            serviceCard1Desc: "Creamos sitios y aplicaciones web robustas, desde portales intuitivos hasta plataformas complejas, adaptadas a tus necesidades.",
+            serviceCard2Title: "API e Integraciones",
+            serviceCard2Desc: "Conectamos tus sistemas. Desarrollamos APIs seguras para integrar pasarelas de pago, CRMs y servicios de terceros.",
+            serviceCard3Title: "Soluciones de Software",
+            serviceCard3Desc: "Transformamos tus ideas en software funcional. Desarrollamos soluciones de escritorio y empresariales para optimizar tus operaciones.",
+            serviceCard4Title: "Optimización y Mantenimiento",
+            serviceCard4Desc: "Aseguramos que tus aplicaciones y bases de datos funcionen de manera óptima, segura y escalable a través del tiempo.",
+            serviceLearnMore: "Saber Más <i class=\"fas fa-arrow-right\"></i>",
             techTitle: "Tecnologías que Usamos",
             projectsTitle: "<i class=\"fas fa-tasks\"></i> Nuestros Proyectos", // Icono incluido
-            projectsIntro: "Aquí algunos de los proyectos de los que estamos orgullosos. (¡Más próximamente!)",
-            project1Title: "Proyecto Digitalización 4.0",
-            project1Desc: "Una aplicación web innovadora para optimizar los flujos de trabajo internos y aumentar la productividad \"digitalización industrial 4.0\"",
-            project2Title: "Proyecto Tienda Online Personalizada + comercio electrónico",
-            project2Desc: "Plataforma de comercio electrónico personalizada que permite una gestión integral de productos, una gestión intuitiva del carrito de compra y un procesamiento seguro de pagos a través de la API de Mercado Pago. El sistema incorpora autenticación de usuarios y seguimiento detallado de pedidos.",
+            projectsIntro: "Una muestra de nuestro trabajo. Cada proyecto refleja nuestra dedicación para construir aplicaciones robustas, escalables y centradas en el usuario.",
+            project1Title: "Digitalización Industrial 4.0",
+            project1Desc: "Aplicación web innovadora para optimizar flujos de trabajo internos y aumentar la productividad en la Industria 4.0.",
+            project2Title: "Tienda E-commerce a Medida",
+            project2Desc: "Plataforma e-commerce con gestión de productos, carrito de compras y pagos seguros a través de la API de Mercado Pago.",
             project3Title: "Proyecto Gamma",
             project3Desc: "Optimización y migración de bases de datos para una gran plataforma de comercio electrónico, mejorando el rendimiento en un 60%.",
             projectLinkView: "Ver Proyecto <i class=\"fas fa-external-link-alt\"></i>",
@@ -143,14 +138,14 @@ document.addEventListener('DOMContentLoaded', () => {
             contactFormEmail: "Tu Correo Electrónico", // Placeholder
             contactFormMessage: "Tu Mensaje", // Placeholder
             contactFormSubmit: "Enviar Mensaje",
-            contactOrConnect: "O conéctate con nosotros directamente:",
-            contactGithub: "<i class=\"fab fa-github\"></i> Nuestro GitHub",
-            contactEmail: "<i class=\"fas fa-envelope\"></i> Escríbenos",
+            contactLocation: "Ubicación",
+            contactEmailLabel: "Correo Electrónico",
+            contactPhoneLabel: "Teléfono",
+            contactGithubLabel: "GitHub",
             footerAboutText: "Creando excelencia digital a través de código innovador y soporte dedicado. Construyamos el futuro juntos.",
             footerQuickLinks: "Enlaces Rápidos",
-            footerBlog: "Blog",
             footerContactUs: "Contáctanos",
-            footerAddress: "", // Icono está en el HTML
+            footerAddress: "Av. Siempreviva 123, Sprinfield", // Icono está en el HTML
             footerPhone: "+1 234 567 890", // Icono está en el HTML
             footerEmail: "info@codeMateAR.com", // Icono está en el HTML
             footerRights: "Todos los Derechos Reservados.",
@@ -244,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Mobile Navigation ---
     if (mobileNavToggle && nav) {
         mobileNavToggle.addEventListener('click', () => {
-            const isExpanded = nav.classList.toggle('active');
+            const isExpanded = navWrapper.classList.toggle('active');
             mobileNavToggle.setAttribute('aria-expanded', isExpanded);
             const icon = mobileNavToggle.querySelector('i');
             const currentLang = document.documentElement.lang;
@@ -257,10 +252,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        nav.querySelectorAll('a').forEach(link => {
+        navWrapper.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                if (nav.classList.contains('active')) {
-                    nav.classList.remove('active');
+                if (navWrapper.classList.contains('active')) {
+                    navWrapper.classList.remove('active');
                     mobileNavToggle.setAttribute('aria-expanded', 'false');
                     mobileNavToggle.querySelector('i').className = 'fas fa-bars';
                     const currentLang = document.documentElement.lang;
@@ -269,6 +264,17 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // --- Header Scroll Effect ---
+    const handleHeaderScroll = () => {
+        if (window.scrollY > 50) {
+            mainHeader.classList.add('scrolled');
+        } else {
+            mainHeader.classList.remove('scrolled');
+        }
+    };
+    window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+    handleHeaderScroll(); // Initial check
 
     // --- Scroll Reveal ---
     const revealSections = () => {
@@ -285,28 +291,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Smooth Scroll ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (!targetId || targetId === "#" || targetId.startsWith("#") && !document.querySelector(targetId)) { // Prevent error for invalid selectors
-                // Allow normal behavior for external links or links to other pages that might start with #
-                if (targetId.startsWith("#") && document.querySelector(targetId)) {
-                    e.preventDefault(); // Only prevent default if it's a valid internal anchor
-                } else if (targetId === "#"){
-                    e.preventDefault(); // Prevent jump to top for href="#"
-                    return;
-                } else {
-                    return; // Allow navigation to other pages
-                }
-            }
-            
-            const targetElement = document.querySelector(targetId);
+            const href = this.getAttribute('href');
 
-            if (targetElement) {
-                e.preventDefault(); // Prevent default only if targetElement is found for internal scroll
-                let headerOffset = mainHeader.offsetHeight;
-                const topBar = document.getElementById('top-bar');
-                if (topBar && getComputedStyle(topBar).display !== 'none') {
-                    headerOffset += topBar.offsetHeight;
-                }
+            // Si es solo un "#", previene el salto a la parte superior de la página.
+            if (href === '#') {
+                e.preventDefault();
+                return;
+            }
+
+            // Intenta encontrar el elemento en la página actual.
+            const targetElement = document.querySelector(href);
+            if (targetElement) { // Si el elemento existe, realiza el scroll suave.
+                e.preventDefault();
+                const headerOffset = mainHeader.offsetHeight;
                 
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
