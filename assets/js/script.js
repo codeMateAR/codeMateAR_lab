@@ -357,11 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     // If navigating to the hero section, force re-animation
                     if (href === '#hero') {
-                        const heroSection = document.getElementById('hero');
-                        heroSection.classList.remove('visible');
-                        // Force reflow to ensure animation restarts
-                        void heroSection.offsetWidth;
-                        heroSection.classList.add('visible');
+                        handleHeroReveal();
                     } else {
                         revealSections();
                     }
@@ -510,10 +506,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetchWeatherAndDate();
 
-    // Ensure hero section is visible on load
-    document.getElementById('hero').classList.add('visible');
+    // Function to handle hero section reveal
+    const handleHeroReveal = () => {
+        const heroSection = document.getElementById('hero');
+        if (heroSection) {
+            // 1. Remove the visible class first
+            heroSection.classList.remove('visible');
 
-    revealSections();
+            // 2. Add the temporary reset class
+            heroSection.classList.add('hero-initial-state');
+
+            // 3. Force reflow to ensure the reset state is applied
+            void heroSection.offsetWidth;
+
+            // 4. Remove the temporary reset class and re-add visible after a tiny delay
+            // This allows the browser to register the reset before starting the animation
+            setTimeout(() => {
+                heroSection.classList.remove('hero-initial-state');
+                heroSection.classList.add('visible');
+            }, 10); // A very small delay (e.g., 10ms)
+        }
+    };
+
+    // Ensure hero section is visible on initial load
+    handleHeroReveal();
+    revealSections(); // Also reveal other sections on initial load
 
     startTypingAnimation();
 
@@ -521,5 +538,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const techLogos = document.querySelectorAll('.tech-logos i, .tech-logos .tech-logo-img');
     techLogos.forEach((logo, index) => {
         logo.style.animationDelay = `${index * 0.2}s`;
+    });
+
+    // --- Handle hashchange event for hero section re-reveal ---
+    window.addEventListener('hashchange', () => {
+        if (window.location.hash === '#hero') {
+            handleHeroReveal();
+            revealSections(); // Ensure other sections are also handled if they become visible
+        }
     });
 });

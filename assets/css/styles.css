@@ -1274,3 +1274,12 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 .project-card .relative.overflow-hidden .bg-gradient-to-t {
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
 }
+
+/* Hero Section Animation Reset State */
+.hero-initial-state h1,
+.hero-initial-state .subtitle,
+.hero-initial-state .cta-button {
+    opacity: 0 !important;
+    transform: translateY(30px) !important;
+    transition: none !important; /* Disable transition during reset */
+}
