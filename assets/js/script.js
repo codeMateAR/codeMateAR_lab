@@ -228,6 +228,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Language Switcher ---
     const applyLanguage = (lang) => {
+        // Remove 'visible' class from all sections to re-trigger animation
+        sections.forEach(section => {
+            section.classList.remove('visible');
+        });
+
         document.documentElement.lang = lang;
         document.querySelectorAll('[data-key]').forEach(element => {
             const key = element.getAttribute('data-key');
@@ -249,6 +254,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         languageToggleButton.setAttribute('aria-label', lang === 'en' ? 'Switch to Spanish' : 'Cambiar a Inglés');
         localStorage.setItem('language', lang);
+
+        // Re-trigger reveal animation after language change
+        revealSections();
     };
 
 
@@ -333,6 +341,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
+
+                // Re-trigger reveal animation after smooth scroll
+                revealSections();
             }
         });
     });
