@@ -473,6 +473,7 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    height: 150px; /* Add fixed height */
 }
 .project-info h3 {
     margin-bottom: 0.75rem;
@@ -616,7 +617,8 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 }
 
 /* Floating label effect */
-.form-group.active .form-label, .form-input:focus + .form-label {
+.form-group.active .form-label,
+.form-input:focus + .form-label {
     top: -14px;
     left: 0;
     font-size: 0.8rem;
@@ -631,6 +633,52 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
     width: 100%;
     gap: 0.75rem;
     justify-content: center;
+}
+
+.contact-form .cta-button.loading span {
+    display: none;
+}
+
+.contact-form .cta-button.loading::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#form-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    display: none;
+}
+
+#form-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    display: block;
+}
+
+#form-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    display: block;
+}
+
+.contact-form .cta-button:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
 }
 
 .contact-form .cta-button:hover i {
@@ -860,6 +908,15 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
     /* Si usaste display: flex arriba, line-height no es tan crucial */
 }
 
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
 /* --- Floating Action Buttons --- */
 .floating-controls {
     position: fixed;
@@ -1021,11 +1078,34 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
   cursor: default;
 /* Añado vertical-align para alineación */
   vertical-align: middle;
+  animation: pulse 4s infinite;
 }
 
 .tech-logos i:hover {
   transform: scale(1.2);     /* Crecen al pasar el mouse */
   color: #0078d7;            /* Cambia color al hover (opcional) */
+  animation-play-state: paused;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.tech-logos i,
+.tech-logo-img {
+    animation: pulse 4s infinite;
+}
+
+.tech-logos i:hover,
+.tech-logo-img:hover {
+  transform: scale(1.2);     /* Crecen al pasar el mouse */
+  color: #0078d7;            /* Cambia color al hover (opcional) */
+  animation-play-state: paused; /* Pausa la animación al pasar el cursor */
 }
 .tech-logo-img {
   height: 64px; /* **Igualar la altura al font-size de los íconos Devicon** */
@@ -1037,10 +1117,12 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
   /* Añadir vertical-align para asegurar una buena alineación con los iconos */
   vertical-align: middle;
   border-radius: 50%;
+  animation: pulse 4s infinite;
 }
 
 .tech-logo-img:hover {
   transform: scale(1.2); /* **Crecen al pasar el mouse, igual que los Devicon** */
+  animation-play-state: paused;
 }
 
 /* New styles for project cards based on Tailwind CSS snippet */
