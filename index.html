@@ -27,17 +27,17 @@
                 </div>
             </a>
             <div class="nav-wrapper">
-                <nav>
-                    <ul>
-                        <li><a href="#hero" data-key="navHome">Home</a></li>
-                        <li><a href="#services" data-key="navServices">Services</a></li>
-                        <li><a href="#projects" data-key="navProjects">Projects</a></li>
-                        <li><a href="#about" data-key="navAbout">About</a></li>
-                        <li><a href="#contact" data-key="navContact">Contact</a></li>
-                    </ul>
-                </nav>
-                <a href="customers/login.html" class="cta-button-outline header-cta" data-key="topBarClientArea"><i class="fas fa-user-circle"></i> Client Area</a>
-            </div>
+                    <nav>
+                        <ul>
+                            <li><a href="#hero" data-key="navHome">Home</a></li>
+                            <li><a href="#services" data-key="navServices">Services</a></li>
+                            <li><a href="#projects" data-key="navProjects">Projects</a></li>
+                            <li><a href="#about" data-key="navAbout">About</a></li>
+                            <li><a href="#contact" data-key="navContact">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <div id="date-temp-display"></div>
+                </div>
             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
@@ -114,25 +114,37 @@
 
         <section id="projects" class="section">
             <div class="container">
-                <h2 data-key="projectsTitle"><i class="fas fa-tasks"></i> Our Projects</h2>
+                <h2 data-key="projectsTitle" class="text-gradient"><i class="fas fa-tasks"></i> Our Projects</h2>
                  <p class="section-intro" data-key="projectsIntro">Here are some of the projects we're proud of. (More coming soon!)</p>
                  <div class="projects-grid">
-                    <div class="project-card">
-                        <img src="assets/images/digitalizacion_4_0.png" alt="Project Alpha Thumbnail" class="project-thumbnail">
-                        <div class="project-info">
-                            <h3 data-key="project1Title">Project Alpha</h3>
-                            <p data-key="project1Desc">An innovative web application to streamline internal workflows and boost productivity.</p>
-                            <a href="#contact" class="project-link" data-key="projectLinkView">View Project <i class="fas fa-external-link-alt"></i></a>
+                    <a href="#contact" class="project-card-link">
+                        <div class="project-card">
+                            <div class="project-image-container">
+                                <img  
+                                    class="w-full h-64 md:h-full object-cover hover:scale-110 transition-transform duration-500"
+                                    alt="Industrial digitalization project showing modern factory with IoT sensors and real-time analytics dashboard"
+                                    src="assets/images/digitalizacion_4_0.png" />
+                            </div>
+                            <div class="project-info glass-effect">
+                                <h3 class="text-2xl font-bold mb-4 text-foreground" data-key="project1Title">Project Alpha</h3>
+                                <p class="text-muted-foreground mb-6 leading-relaxed" data-key="project1Desc">An innovative web application to streamline internal workflows and boost productivity.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="assets/images/store+e-commerce.png" alt="Project Beta Thumbnail" class="project-thumbnail">
-                        <div class="project-info">
-                            <h3 data-key="project2Title">Project Beta</h3>
-                            <p data-key="project2Desc">Custom e-commerce platform that enables comprehensive product management, intuitive shopping cart management, and secure payment processing through the Mercado Pago API. The system includes user authentication and detailed order tracking.</p>
-                            <a href="#contact" class="project-link" data-key="projectLinkView">View Project <i class="fas fa-external-link-alt"></i></a>
+                    </a>
+                    <a href="#contact" class="project-card-link">
+                        <div class="project-card">
+                            <div class="project-image-container">
+                                <img  
+                                    class="w-full h-64 md:h-full object-cover hover:scale-110 transition-transform duration-500"
+                                    alt="Project Beta Thumbnail"
+                                    src="assets/images/store+e-commerce.png" />
+                            </div>
+                            <div class="project-info glass-effect">
+                                <h3 class="text-2xl font-bold mb-4 text-foreground" data-key="project2Title">Project Beta</h3>
+                                <p class="text-muted-foreground mb-6 leading-relaxed" data-key="project2Desc">Custom e-commerce platform that enables comprehensive product management, intuitive shopping cart management, and secure payment processing through the Mercado Pago API. The system includes user authentication and detailed order tracking.</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <!--<div class="project-card">
                         <img src="https://via.placeholder.com/400x250/98FB98/333333?text=Project+Gamma" alt="Project Gamma Thumbnail" class="project-thumbnail">
                         <div class="project-info">
@@ -184,7 +196,6 @@
                      <i class="devicon-sqlite-plain colored" title="SQLite"></i>
                      <i class="devicon-vuejs-plain colored" title="Vue.js"></i>
                      <i class="devicon-python-plain colored" title="Python"></i>
-                     <i class="devicon-sqlalchemy-plain colored" title="SQLAlchemy"></i>
                      <img src="assets/images/Mp.png" alt="Mercado Pago" class="tech-logo-img" title="Mercado Pago SDK">
                      <img src="assets/images/supabase.png" alt="Supabase" class="tech-logo-img" title="Supabase">
                  </div>
@@ -299,9 +310,12 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/5493411234567?text=Hola,%20estoy%20interesado%20en%20sus%20servicios." class="whatsapp-flotante" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+    
 
     <div class="floating-controls">
+        <a href="https://wa.me/5493413794759?text=Hola,%20estoy%20interesado%20en%20sus%20servicios." class="whatsapp-flotante" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i>
+        </a>
         <button id="language-toggle" aria-label="Switch language">
             <i class="fas fa-globe"></i> <span id="lang-indicator">EN</span>
         </button>
