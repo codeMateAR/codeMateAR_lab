@@ -60,3 +60,29 @@
     font-weight: 500;
     white-space: nowrap;
 }
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    gap: 1rem; /* Space between items */
+}
+
+.header-left h1 {
+    margin-bottom: 0.2rem;
+}
+
+#info-section {
+    margin-top: 0.5rem;
+    padding: 0.8rem;
+    background-color: #f0f0f0; /* Light gray background */
+    border-radius: var(--border-radius);
+    border: 1px solid #ccc;
+}
+
+#info-section p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #333;
+}

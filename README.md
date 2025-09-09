@@ -18,7 +18,11 @@ Este repositorio contiene el sitio web oficial del portafolio de codeMate AR y l
 1.  **Prerrequisitos:** Asegúrate de tener [Node.js] instalado.
 2.  **Instalar Dependencias:** Abre tu terminal en la raíz del proyecto y ejecuta:
     ```
+    python -m venv venv
+    .\venv\Scripts\Activate
     npm install
+    pip install -r requirements.txt
+
     ```
 3.  **Ejecutar el Servidor:** Para iniciar el servidor de backend, ejecuta:
     ```

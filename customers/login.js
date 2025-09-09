@@ -20,7 +20,7 @@ document.getElementById('login-form').addEventListener('submit', async function(
 
         if (response.ok && result.success) {
             // Si el login es exitoso, redirigir al dashboard o a la página de facturación
-            window.location.href = '/customers/billing.html';
+            window.location.href = '/customers/dashboard.html';
         } else {
             // Mostrar mensaje de error
             errorMessageDiv.textContent = result.message || 'Error al iniciar sesión.';
