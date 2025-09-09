@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const languageToggleButton = document.getElementById('language-toggle');
     const langIndicator = document.getElementById('lang-indicator');
     const currentYearSpan = document.getElementById('current-year');
-    const sections = document.querySelectorAll('.section:not(.hero-section):not(.stats-bar-section)');
+    const sections = document.querySelectorAll('.section:not(.stats-bar-section)');
     const contactForm = document.getElementById('contact-form');
 
     // --- Date and Temperature Display ---
@@ -313,8 +313,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const triggerBottom = window.innerHeight * 0.85;
         sections.forEach(section => {
             const sectionTop = section.getBoundingClientRect().top;
-            if (sectionTop < triggerBottom) {
+            const sectionBottom = section.getBoundingClientRect().bottom;
+
+            if (sectionTop < triggerBottom && sectionBottom > 0) {
+                // Section is in view, add visible class
                 section.classList.add('visible');
+            } else {
+                // Section is out of view, remove visible class to allow re-animation
+                section.classList.remove('visible');
             }
         });
     };
@@ -337,13 +343,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
+                // Remove 'visible' class from all sections to re-trigger animation
+                sections.forEach(section => {
+                    section.classList.remove('visible');
+                });
+
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
 
                 // Re-trigger reveal animation after smooth scroll
-                revealSections();
+                setTimeout(() => {
+                    // If navigating to the hero section, force re-animation
+                    if (href === '#hero') {
+                        const heroSection = document.getElementById('hero');
+                        heroSection.classList.remove('visible');
+                        // Force reflow to ensure animation restarts
+                        void heroSection.offsetWidth;
+                        heroSection.classList.add('visible');
+                    } else {
+                        revealSections();
+                    }
+                }, 100); // Small delay to ensure scroll completes
             }
         });
     });
@@ -487,6 +509,9 @@ document.addEventListener('DOMContentLoaded', () => {
     applyLanguage(savedLanguage);
 
     fetchWeatherAndDate();
+
+    // Ensure hero section is visible on load
+    document.getElementById('hero').classList.add('visible');
 
     revealSections();
 

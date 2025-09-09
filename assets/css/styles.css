@@ -234,16 +234,43 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
     background: linear-gradient(45deg, rgba(0, 40, 80, 0.7), rgba(0, 92, 153, 0.6));
     z-index: 1;
 }
-.hero-content { position: relative; z-index: 2; animation: heroEntrance 1s ease-out forwards; }
+.hero-content { position: relative; z-index: 2; }
 @keyframes heroEntrance {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
-.hero-section h1 { color: #fff; margin-bottom: 1rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+.hero-section h1 {
+    color: #fff; margin-bottom: 1rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+}
+.hero-section.visible h1 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .hero-section .subtitle {
     font-size: clamp(1.1rem, 2.5vw, 1.5rem); margin-bottom: 2.5rem;
     max-width: 750px; margin-left: auto; margin-right: auto; opacity: 0.95;
     color: #f0f0f0; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
+}
+.hero-section.visible .subtitle {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-section .cta-button {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out 0.6s, transform 0.8s ease-out 0.6s;
+}
+.hero-section.visible .cta-button {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 
