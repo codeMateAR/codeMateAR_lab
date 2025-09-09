@@ -17,17 +17,6 @@ Este repositorio contiene el sitio web oficial del portafolio de codeMate AR. Es
     *   **Open-Meteo:** Para obtener datos meteorológicos.
     *   **API de Geolocalización:** Para obtener la ubicación del usuario.
 
-## Cómo Ejecutarlo
+## Licencia
 
-Este es un sitio web estático. Para ejecutarlo, solo necesitas abrir el archivo `index.html` en tu navegador web.
-
-1.  Clona este repositorio a tu máquina local.
-2.  Abre el archivo `index.html` en un navegador web moderno (como Chrome, Firefox o Edge).
-
-**Nota:** Para permitir que el sitio web obtenga tu ubicación y el clima, es posible que necesites servir los archivos a través de un servidor web local. Una forma sencilla de hacerlo es usando una extensión de VS Code como "Live Server" o ejecutando un servidor simple de Python en el directorio raíz del proyecto:
-
-```bash
-python -m http.server
-```
-
-Luego, abre tu navegador y navega a `http://localhost:8000`.
+Este proyecto se encuentra bajo una licencia propietaria. Consulta el archivo (LICENSE) para más detalles.
