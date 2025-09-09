@@ -447,7 +447,7 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     overflow: hidden;
-    cursor: pointer;
+    cursor: default;
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
     display: flex;
     flex-direction: column;
@@ -487,10 +487,7 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
     margin-bottom: 1.5rem;
 }
 
-.project-card-link {
-    text-decoration: none;
-    color: inherit;
-}
+
 
 /* About Us Section */
 .about-features {
