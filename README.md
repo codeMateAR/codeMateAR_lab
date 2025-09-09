@@ -1,31 +1,33 @@
-# codeMate AR - Portafolio y Portal de Cliente
+# codeMate AR - Sitio Web de Portafolio
 
-Este repositorio contiene el sitio web oficial del portafolio de codeMate AR y la infraestructura de backend para su portal de cliente.
+Este repositorio contiene el sitio web oficial del portafolio de codeMate AR. Es un sitio web estático, totalmente responsivo, multilingüe y con temas (claro/oscuro) que muestra servicios, proyectos y tecnologías.
 
 ## Características
 
-- **Portafolio Público:** Un sitio web completamente responsivo, multilingüe y con cambio de tema (claro/oscuro) que muestra servicios, proyectos y tecnologías.
-- **Backend del Portal de Cliente:** Un backend seguro con Node.js, Express y SQLite para gestionar la autenticación de los clientes.
+*   **Portafolio Público:** Un sitio web moderno y responsivo para mostrar servicios, proyectos y habilidades.
+*   **Multilingüe:** Soporta inglés y español.
+*   **Temas:** Incluye un modo claro y oscuro.
+*   **Contenido Dinámico:** Obtiene y muestra la fecha y temperatura actual utilizando la API de Open-Meteo.
+*   **Elementos Interactivos:** Incluye un formulario de contacto con un efecto de animación de escritura.
 
 ## Tecnologías Utilizadas
 
-- **Frontend:** HTML5, CSS3, Vanilla JavaScript
-- **Backend:** Node.js, Express.js
-- **Database:** SQLite3
+*   **Frontend:** HTML5, CSS3, Vanilla JavaScript
+*   **APIs:**
+    *   **Open-Meteo:** Para obtener datos meteorológicos.
+    *   **API de Geolocalización:** Para obtener la ubicación del usuario.
 
-## Configuración e Instalación
+## Cómo Ejecutarlo
 
-1.  **Prerrequisitos:** Asegúrate de tener [Node.js] instalado.
-2.  **Instalar Dependencias:** Abre tu terminal en la raíz del proyecto y ejecuta:
-    ```
-    python -m venv venv
-    .\venv\Scripts\Activate
-    npm install
-    pip install -r requirements.txt
+Este es un sitio web estático. Para ejecutarlo, solo necesitas abrir el archivo `index.html` en tu navegador web.
 
-    ```
-3.  **Ejecutar el Servidor:** Para iniciar el servidor de backend, ejecuta:
-    ```
-    npm start
-    ```
-    El servidor estará corriendo en `http://localhost:3000`. Ahora puedes abrir `index.html` o navegar a `customers/login.html` para probar la funcionalidad.
+1.  Clona este repositorio a tu máquina local.
+2.  Abre el archivo `index.html` en un navegador web moderno (como Chrome, Firefox o Edge).
+
+**Nota:** Para permitir que el sitio web obtenga tu ubicación y el clima, es posible que necesites servir los archivos a través de un servidor web local. Una forma sencilla de hacerlo es usando una extensión de VS Code como "Live Server" o ejecutando un servidor simple de Python en el directorio raíz del proyecto:
+
+```bash
+python -m http.server
+```
+
+Luego, abre tu navegador y navega a `http://localhost:8000`.

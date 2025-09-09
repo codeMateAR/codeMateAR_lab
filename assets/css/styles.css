@@ -84,14 +84,17 @@ p { margin-bottom: 1rem; color: var(--text-color-medium); }
 .section-intro { max-width: 750px; margin-left: auto; margin-right: auto; text-align: center; margin-bottom: 3rem; font-size: 1.05rem; }
 
 
-.section { 
-    padding: 4.5rem 0; 
+.section {
+    padding: 4.5rem 0;
+}
+
+.section > *:not(h2) {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.section.visible {
+.section.visible > *:not(h2) {
     opacity: 1;
     transform: translateY(0);
 }
@@ -613,9 +616,7 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 }
 
 /* Floating label effect */
-.form-input:focus + .form-label,
-.form-input:not(:placeholder-shown) + .form-label,
-.form-group.is-typing .form-label {
+.form-group.active .form-label, .form-input:focus + .form-label {
     top: -14px;
     left: 0;
     font-size: 0.8rem;

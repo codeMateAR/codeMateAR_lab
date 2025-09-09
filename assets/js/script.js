@@ -10,11 +10,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section:not(.hero-section):not(.stats-bar-section)');
     const contactForm = document.getElementById('contact-form');
 
-    // --- Translations Data (CORREGIDO para incluir HTML de iconos fas fa-user) ---
+    // --- Date and Temperature Display ---
+    const dateTempDisplay = document.getElementById('date-temp-display');
+
+    const fetchWeatherAndDate = () => {
+        // Get and format the date
+        const now = new Date();
+        const dateString = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
+
+        // Get location and fetch weather
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+
+                fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data && data.current_weather) {
+                            const temp = data.current_weather.temperature;
+                            dateTempDisplay.innerHTML = `<i class="fas fa-calendar-alt"></i> ${dateString} | <i class="fas fa-thermometer-half"></i> ${temp}°C`;
+                        } else {
+                            dateTempDisplay.innerHTML = `<i class="fas fa-calendar-alt"></i> ${dateString}`;
+                        }
+                    })
+                    .catch(() => {
+                        dateTempDisplay.innerHTML = `<i class="fas fa-calendar-alt"></i> ${dateString}`; // Show only date on API error
+                    });
+            }, () => {
+                // Geolocation denied or failed
+                dateTempDisplay.innerHTML = `<i class="fas fa-calendar-alt"></i> ${dateString}`;
+            });
+        } else {
+            // Geolocation not supported
+            dateTempDisplay.innerHTML = `<i class="fas fa-calendar-alt"></i> ${dateString}`;
+        }
+    };
+
+    // --- Translations Data ---
     const translations = {
         en: {
             pageTitle: "codeMate AR - Custom Web Solutions",
-            topBarClientArea: "<i class=\"fas fa-user-circle\"></i> Client Area", // Icono incluido
             navHome: "Home",
             navServices: "Services",
             navProjects: "Projects",
@@ -22,71 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
             navContact: "Contact",
             heroTitle: "Innovative Web & Software Development",
             heroSubtitle: "We create customized digital solutions to boost your projects and achieve your goals.",
-            heroCta: "Get a Free Quote (customized to your needs)",
-            stat1Val: "20+",
-            stat1Desc: "Completed and In Development Projects",
-            stat2Val: "10+",
-            stat2Desc: "Happy Clients",
-            stat3Val: "1000+",
-            stat3Desc: "Working Hours",
-            stat4Val: "1M+",
-            stat4Desc: "Lines of Code",
-            servicesTitle: "<i class=\"fas fa-cogs\"></i> Our Services",
-            servicesIntro: "We offer a complete range of digital solutions to transform your ideas into reality. Discover how we can help you.",
-            serviceCard1Title: "Custom Web Development",
-            serviceCard1Desc: "We create robust websites and applications, from intuitive portals to complex platforms, tailored to your needs.",
-            serviceCard2Title: "API & Integrations",
-            serviceCard2Desc: "We connect your systems. We develop secure APIs to integrate payment gateways, CRMs, and third-party services.",
-            serviceCard3Title: "Software Solutions",
-            serviceCard3Desc: "We transform your ideas into functional software. We develop desktop and enterprise solutions to optimize your operations.",
-            serviceCard4Title: "Optimization & Maintenance",
-            serviceCard4Desc: "We ensure your applications and databases run optimally, securely, and scalably over time.",
-            serviceLearnMore: "Learn More <i class=\"fas fa-arrow-right\"></i>",
-            techTitle: "Technologies We Use",
-            projectsTitle: "<i class=\"fas fa-tasks\"></i> Our Projects", // Icono incluido
-            projectsIntro: "A showcase of our craftsmanship. Each project reflects our dedication to building robust, scalable, and user-centric applications.",
-            project1Title: "Industrial Digitalization 4.0",
-            project1Desc: "Innovative web application to optimize internal workflows and boost productivity in Industry 4.0.",
-            project2Title: "Custom E-commerce Store",
-            project2Desc: "E-commerce platform with product management, shopping cart, and secure payments via Mercado Pago API.",
-            project3Title: "Project Gamma",
-            project3Desc: "Database optimization and migration for a large e-commerce platform, improving performance by 60%.",
-            projectLinkView: "View Project <i class=\"fas fa-external-link-alt\"></i>",
-            aboutTitle: "<i class=\"fas fa-users-cog\"></i> About Us", // Icono incluido
-            aboutIntro: "We are a dynamic team of passionate developers, designers, and strategists committed to delivering cutting-edge digital solutions. With years of experience and a collaborative approach, we transform ideas into impactful realities.",
-            aboutFeature1Title: "Innovation",
-            aboutFeature1Desc: "We constantly explore new technologies to provide innovative solutions.",
-            aboutFeature2Title: "Quality",
-            aboutFeature2Desc: "Our commitment to quality ensures robust and reliable products.",
-            aboutFeature3Title: "Collaboration",
-            aboutFeature3Desc: "We work closely with our clients to achieve shared success.",
-            contactTitle: "<i class=\"fas fa-envelope-open-text\"></i> Get in Touch", // Icono incluido
-            contactIntro: "Ready to start your next project or have a question? We'd love to hear from you!",
-            contactFormName: "Your Name", // Placeholder, no necesita ícono aquí
-            contactFormEmail: "Your Email", // Placeholder
-            contactFormMessage: "Your Message", // Placeholder
+            heroCta: "Get a Free Quote",
+            contactFormName: "Your Name",
+            contactFormEmail: "Your Email",
+            contactFormMessage: "Your Message",
             contactFormSubmit: "Send Message",
-            contactLocation: "Location",
-            contactEmailLabel: "Email",
-            contactPhoneLabel: "Phone",
-            contactGithubLabel: "GitHub",
-            footerAboutText: "Crafting digital excellence through innovative code and dedicated support. Let's build the future together.",
-            footerQuickLinks: "Quick Links",
-            footerContactUs: "Contact Us",
-            footerAddress: "Av. Siempreviva 123, Sprinfield", // Icono está en el HTML, no aquí
-            footerPhone: "+1 234 567 890", // Icono está en el HTML, no aquí
-            footerEmail: "info@codeMateAR.com", // Icono está en el HTML, no aquí
-            footerRights: "All Rights Reserved.",
-            footerPrivacy: "Privacy Policy",
-            footerTerms: "Terms of Service",
-            socialFacebook: "Facebook", // aria-label
-            socialTwitter: "Twitter",   // aria-label
-            socialGithub: "GitHub",     // aria-label
-            socialLinkedIn: "LinkedIn", // aria-label
+            contactFormNamePlaceholder: "John Doe",
+            contactFormEmailPlaceholder: "john.doe@example.com",
+            contactFormMessagePlaceholder: "Hello, I'm interested in learning more about your services...",
+            // ... other translations
         },
         es: {
             pageTitle: "codeMate AR - Soluciones Web Personalizadas",
-            topBarClientArea: "<i class=\"fas fa-user-circle\"></i> Área de Cliente", // Icono incluido
             navHome: "Inicio",
             navServices: "Servicios",
             navProjects: "Proyectos",
@@ -94,67 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
             navContact: "Contacto",
             heroTitle: "Desarrollo Web y Software Innovador",
             heroSubtitle: "Creamos soluciones digitales personalizadas para impulsar tus proyectos y alcanzar tus metas.",
-            heroCta: "Obtén una cotización gratis (personalizada a tus necesidades)",
-            stat1Val: "20+",
-            stat1Desc: "Proyectos finalizados y en desarrollo",
-            stat2Val: "10+",
-            stat2Desc: "Clientes Satisfechos",
-            stat3Val: "1000+",
-            stat3Desc: "Horas de trabajo",
-            stat4Val: "1M+",
-            stat4Desc: "Líneas de Código",
-            servicesTitle: "<i class=\"fas fa-cogs\"></i> Nuestros Servicios",
-            servicesIntro: "Ofrecemos una gama completa de soluciones digitales para transformar tus ideas en realidad. Descubre cómo podemos ayudarte.",
-            serviceCard1Title: "Desarrollo Web a Medida",
-            serviceCard1Desc: "Creamos sitios y aplicaciones web robustas, desde portales intuitivos hasta plataformas complejas, adaptadas a tus necesidades.",
-            serviceCard2Title: "API e Integraciones",
-            serviceCard2Desc: "Conectamos tus sistemas. Desarrollamos APIs seguras para integrar pasarelas de pago, CRMs y servicios de terceros.",
-            serviceCard3Title: "Soluciones de Software",
-            serviceCard3Desc: "Transformamos tus ideas en software funcional. Desarrollamos soluciones de escritorio y empresariales para optimizar tus operaciones.",
-            serviceCard4Title: "Optimización y Mantenimiento",
-            serviceCard4Desc: "Aseguramos que tus aplicaciones y bases de datos funcionen de manera óptima, segura y escalable a través del tiempo.",
-            serviceLearnMore: "Saber Más <i class=\"fas fa-arrow-right\"></i>",
-            techTitle: "Tecnologías que Usamos",
-            projectsTitle: "<i class=\"fas fa-tasks\"></i> Nuestros Proyectos", // Icono incluido
-            projectsIntro: "Una muestra de nuestro trabajo. Cada proyecto refleja nuestra dedicación para construir aplicaciones robustas, escalables y centradas en el usuario.",
-            project1Title: "Digitalización Industrial 4.0",
-            project1Desc: "Aplicación web innovadora para optimizar flujos de trabajo internos y aumentar la productividad en la Industria 4.0.",
-            project2Title: "Tienda E-commerce a Medida",
-            project2Desc: "Plataforma e-commerce con gestión de productos, carrito de compras y pagos seguros a través de la API de Mercado Pago.",
-            project3Title: "Proyecto Gamma",
-            project3Desc: "Optimización y migración de bases de datos para una gran plataforma de comercio electrónico, mejorando el rendimiento en un 60%.",
-            projectLinkView: "Ver Proyecto <i class=\"fas fa-external-link-alt\"></i>",
-            aboutTitle: "<i class=\"fas fa-users-cog\"></i> Sobre Nosotros", // Icono incluido
-            aboutIntro: "Somos un equipo dinámico de desarrolladores, diseñadores y estrategas apasionados, comprometidos con la entrega de soluciones digitales de vanguardia. Con años de experiencia y un enfoque colaborativo, transformamos ideas en realidades impactantes.",
-            aboutFeature1Title: "Innovación",
-            aboutFeature1Desc: "Exploramos constantemente nuevas tecnologías para ofrecer soluciones innovadoras.",
-            aboutFeature2Title: "Calidad",
-            aboutFeature2Desc: "Nuestro compromiso con la calidad garantiza productos robustos y confiables.",
-            aboutFeature3Title: "Colaboración",
-            aboutFeature3Desc: "Trabajamos en estrecha colaboración con nuestros clientes para lograr el éxito compartido.",
-            contactTitle: "<i class=\"fas fa-envelope-open-text\"></i> Ponte en Contacto", // Icono incluido
-            contactIntro: "¿Listo para comenzar tu próximo proyecto o tienes alguna pregunta? ¡Nos encantaría saber de ti!",
-            contactFormName: "Tu Nombre", // Placeholder
-            contactFormEmail: "Tu Correo Electrónico", // Placeholder
-            contactFormMessage: "Tu Mensaje", // Placeholder
+            heroCta: "Obtén una cotización gratis",
+            contactFormName: "Tu Nombre",
+            contactFormEmail: "Tu Correo Electrónico",
+            contactFormMessage: "Tu Mensaje",
             contactFormSubmit: "Enviar Mensaje",
-            contactLocation: "Ubicación",
-            contactEmailLabel: "Correo Electrónico",
-            contactPhoneLabel: "Teléfono",
-            contactGithubLabel: "GitHub",
-            footerAboutText: "Creando excelencia digital a través de código innovador y soporte dedicado. Construyamos el futuro juntos.",
-            footerQuickLinks: "Enlaces Rápidos",
-            footerContactUs: "Contáctanos",
-            footerAddress: "Av. Siempreviva 123, Sprinfield", // Icono está en el HTML
-            footerPhone: "+1 234 567 890", // Icono está en el HTML
-            footerEmail: "info@codeMateAR.com", // Icono está en el HTML
-            footerRights: "Todos los Derechos Reservados.",
-            footerPrivacy: "Política de Privacidad",
-            footerTerms: "Términos de Servicio",
-            socialFacebook: "Facebook", // aria-label
-            socialTwitter: "Twitter",   // aria-label
-            socialGithub: "GitHub",     // aria-label
-            socialLinkedIn: "LinkedIn", // aria-label
+            contactFormNamePlaceholder: "Juan Pérez",
+            contactFormEmailPlaceholder: "juan.perez@example.com",
+            contactFormMessagePlaceholder: "Hola, estoy interesado en contactarlos para obtener información sobre...",
+            // ... other translations
         }
     };
 
@@ -187,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', currentTheme);
     });
 
-    // --- Language Switcher (CORREGIDO) ---
+    // --- Language Switcher ---
     const applyLanguage = (lang) => {
         document.documentElement.lang = lang;
         document.querySelectorAll('[data-key]').forEach(element => {
@@ -196,43 +127,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 const translationText = translations[lang][key];
 
                 if (key === 'pageTitle') {
-                    document.title = translationText; // Título de la página
-                } else if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
-                    element.placeholder = translationText; // Placeholders son siempre texto plano
-                } else if (element.tagName === 'TEXTAREA' && element.hasAttribute('placeholder')) {
-                    element.placeholder = translationText; // Placeholders son siempre texto plano
-                } else if (element.hasAttribute('aria-label') && (key.startsWith('social') || key === 'navToggle')) {
-                     element.setAttribute('aria-label', translationText); // Aria-labels son texto plano
-                } else {
-                    // Si la traducción contiene HTML (ej. un ícono), usar innerHTML.
-                    // De lo contrario, usar textContent para seguridad y eficiencia.
-                    if (translationText.includes('<i') || translationText.includes('<span')) {
-                        element.innerHTML = translationText;
+                    document.title = translationText;
+                } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    if(element.hasAttribute('placeholder')) {
+                        // This will be handled by the typing animation
                     } else {
                         element.textContent = translationText;
                     }
+                } else {
+                    element.innerHTML = translationText;
                 }
             }
         });
         if (langIndicator) langIndicator.textContent = lang.toUpperCase();
         languageToggleButton.setAttribute('aria-label', lang === 'en' ? 'Switch to Spanish' : 'Cambiar a Inglés');
         localStorage.setItem('language', lang);
-
-        // Actualizar aria-label del botón de navegación móvil si existe
-        if (mobileNavToggle) {
-            const isExpanded = nav.classList.contains('active');
-             if (isExpanded) {
-                mobileNavToggle.setAttribute('aria-label', lang === 'es' ? 'Cerrar navegación' : 'Close navigation');
-            } else {
-                mobileNavToggle.setAttribute('aria-label', lang === 'es' ? 'Abrir navegación' : 'Open navigation');
-            }
-        }
     };
 
 
     languageToggleButton.addEventListener('click', () => {
         const currentLang = document.documentElement.lang === 'es' ? 'en' : 'es';
         applyLanguage(currentLang);
+        startTypingAnimation(); // Re-start animation with new language
+        fetchWeatherAndDate();
     });
 
 
@@ -293,18 +210,15 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
 
-            // Si es solo un "#", previene el salto a la parte superior de la página.
             if (href === '#') {
                 e.preventDefault();
                 return;
             }
 
-            // Intenta encontrar el elemento en la página actual.
             const targetElement = document.querySelector(href);
-            if (targetElement) { // Si el elemento existe, realiza el scroll suave.
+            if (targetElement) {
                 e.preventDefault();
                 const headerOffset = mainHeader.offsetHeight;
-                
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -332,13 +246,77 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Typing Simulation for Contact Form Placeholders ---
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageTextarea = document.getElementById('message');
+
+    const simulatePlaceholderTyping = (element, text, delay = 100, eraseDelay = 1500) => {
+        let i = 0;
+        let erasing = false;
+        element.parentElement.classList.add('active');
+
+        const type = () => {
+            if (erasing) {
+                if (element.placeholder.length > 0) {
+                    element.placeholder = element.placeholder.slice(0, -1);
+                    setTimeout(type, delay / 2);
+                } else {
+                    erasing = false;
+                    i = 0;
+                    // Restart typing with a short pause
+                    setTimeout(type, delay);
+                }
+            } else {
+                if (i < text.length) {
+                    element.placeholder += text.charAt(i);
+                    i++;
+                    setTimeout(type, delay);
+                } else {
+                    // Finished typing, wait before erasing
+                    erasing = true;
+                    setTimeout(type, eraseDelay);
+                }
+            }
+        };
+        type();
+    };
+
+    const startTypingAnimation = () => {
+        const currentLang = document.documentElement.lang;
+        const namePlaceholder = translations[currentLang]?.contactFormNamePlaceholder || "John Doe";
+        const emailPlaceholder = translations[currentLang]?.contactFormEmailPlaceholder || "john.doe@example.com";
+        const messagePlaceholder = translations[currentLang]?.contactFormMessagePlaceholder || "Hello, I'm interested in learning more about your services...";
+
+        if(nameInput) simulatePlaceholderTyping(nameInput, namePlaceholder);
+        if(emailInput) simulatePlaceholderTyping(emailInput, emailPlaceholder);
+        if(messageTextarea) simulatePlaceholderTyping(messageTextarea, messagePlaceholder);
+    };
+
+    const formInputs = document.querySelectorAll('.form-input');
+    formInputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.parentElement.classList.add('active');
+        });
+
+        input.addEventListener('blur', () => {
+            if (input.value === '' && input.placeholder === '') {
+                input.parentElement.classList.remove('active');
+            }
+        });
+    });
+
     // --- Initial Load Settings ---
     const savedTheme = localStorage.getItem('theme') || 'light';
     applyTheme(savedTheme);
 
-    const savedLanguage = localStorage.getItem('language') || 'en'; // 'en' por defecto
+    const savedLanguage = localStorage.getItem('language') || 'en';
     applyLanguage(savedLanguage);
 
-    revealSections(); // Initial check for visible sections
+    fetchWeatherAndDate();
+
+    revealSections();
+
+    startTypingAnimation();
 
 });
