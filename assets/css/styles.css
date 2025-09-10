@@ -119,20 +119,42 @@ p { margin-bottom: 1rem; color: var(--text-color-medium); }
 }
 
 
+/* New CSS for the Jedi button effect - v2 */
 .hero-section .cta-button {
+    position: relative;
     background: transparent;
     border: 2px solid #ff0000;
     color: #ffffff;
     font-weight: bold;
-    box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000;
     transition: all 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000; /* Added soft neon glow */
+}
+
+.hero-section .cta-button::before {
+    content: '';
+    position: absolute;
+    top: -2px; /* Align with border */
+    left: -2px; /* Align with border */
+    width: 0%; /* Start with no width */
+    height: calc(100% + 4px); /* Cover the border */
+    background-color: #ff0000;
+    /* Removed box-shadow from here */
+    transition: width 0.7s ease-in-out; /* Animate the width on hover */
+    z-index: -1; /* Place it behind the text */
+}
+
+.hero-section .cta-button:hover::before {
+    width: calc(100% + 4px); /* Fill the button on hover */
 }
 
 .hero-section .cta-button:hover {
-    background: #ff0000;
     color: #fff;
-    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000;
+    background-color: #ff0000; /* Optional: for a more solid feel on hover */
 }
+
+/* Remove the old keyframes */
+/* @keyframes jedi-wipe { ... } */
 
 .cta-button-outline {
     display: inline-block;
