@@ -460,11 +460,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 contactForm.reset();
                 formInputs.forEach(input => {
                     input.parentElement.classList.remove('active');
+                    stopTypingAnimation(input);
                 });
 
-                // --- Hide Message After 5s ---
+                // --- Hide Message After 5s and Restart Animation ---
                 setTimeout(() => {
                     formMessage.style.display = 'none';
+                    startTypingAnimation();
                 }, 5000);
 
             }, 2000);
