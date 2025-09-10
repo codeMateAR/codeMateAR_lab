@@ -4,7 +4,7 @@ Este repositorio contiene el sitio web oficial del portafolio de codeMate AR. Es
 
 ## Características
 
-*   **Portafolio Público:** Un sitio web moderno y responsivo para mostrar servicios, proyectos y habilidades.
+*   **Portafolio Público:** Sitio web moderno y responsivo para mostrar servicios, proyectos y habilidades.
 *   **Multilingüe:** Soporta inglés y español.
 *   **Temas:** Incluye un modo claro y oscuro.
 *   **Contenido Dinámico:** Obtiene y muestra la fecha y temperatura actual utilizando la API de Open-Meteo.
