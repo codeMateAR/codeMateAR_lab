@@ -439,35 +439,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const submitButton = contactForm.querySelector('button[type="submit"]');
             const formMessage = document.getElementById('form-message');
+            const formData = new FormData(contactForm);
 
             // --- Loading State ---
             submitButton.classList.add('loading');
             submitButton.disabled = true;
 
-            // --- Simulate API Call ---
-            setTimeout(() => {
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // --- Show Success Message ---
+                    formMessage.textContent = translations[document.documentElement.lang].formSuccessMessage || 'Your message has been sent successfully!';
+                    formMessage.className = 'visible success';
+
+                    // --- Reset Form ---
+                    contactForm.reset();
+                    formInputs.forEach(input => {
+                        input.parentElement.classList.remove('active');
+                        stopTypingAnimation(input);
+                    });
+
+                    // --- Hide Message After 5s and Restart Animation ---
+                    setTimeout(() => {
+                        formMessage.className = '';
+                        startTypingAnimation();
+                    }, 5000);
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            formMessage.textContent = data["errors"].map(error => error["message"]).join(", ")
+                        } else {
+                            formMessage.textContent = "Oops! There was a problem submitting your form";
+                        }
+                        formMessage.className = 'visible error';
+                    })
+                }
+            }).catch(error => {
+                formMessage.textContent = "Oops! There was a problem submitting your form";
+                formMessage.className = 'visible error';
+            }).finally(() => {
                 // --- Reset Button ---
                 submitButton.classList.remove('loading');
                 submitButton.disabled = false;
-
-                // --- Show Success Message ---
-                formMessage.textContent = translations[document.documentElement.lang].formSuccessMessage || 'Your message has been sent successfully!';
-                formMessage.className = 'visible success';
-
-                // --- Reset Form ---
-                contactForm.reset();
-                formInputs.forEach(input => {
-                    input.parentElement.classList.remove('active');
-                    stopTypingAnimation(input);
-                });
-
-                // --- Hide Message After 5s and Restart Animation ---
-                setTimeout(() => {
-                    formMessage.className = '';
-                    startTypingAnimation();
-                }, 5000);
-
-            }, 2000);
+            });
         });
     }
 
