@@ -54,7 +54,7 @@ body {
     padding-top: var(--header-height);
     transition: background-color var(--transition-speed), color var(--transition-speed);
     overflow-x: hidden;
-    zoom: 83%;
+    zoom: 85%;
 }
 
 body.dark-mode {
@@ -344,7 +344,7 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 .service-card {
     background-color: var(--card-bg-light);
     border-radius: var(--border-radius);
-    padding: 1.2rem 0.5rem; /* Reducido para hacer las tarjetas más compactas */
+    padding: 0.6rem 0.8rem; /* Reducido para hacer las tarjetas más compactas */
     box-shadow: var(--box-shadow);
     text-align: center;
     transition: all var(--transition-speed);
@@ -443,7 +443,7 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 
 /* Specific adjustments for Projects section to make it more compact */
 #projects {
-    padding-top: 2.6rem; /* Reducido */
+    padding-top: 1.0rem; /* Reducido */
     padding-bottom: 4rem;
 }
 
@@ -551,8 +551,9 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 }
 
 .tech-title-within-about {
-    margin-top: 2.5rem; /* Reducido */
-    margin-bottom: 1rem; /* Reducido */
+    margin-top: 0.4rem; /* Reducido */
+    margin-bottom: 0.3rem; /* Reducido */
+    font-size: 1.8rem;
 }
 
 /* Container for the tech logos to allow it to span a wider area */
@@ -1119,12 +1120,11 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
   display: flex;             /* Usamos flexbox */
   justify-content: center;   /* Centra horizontalmente */
   align-items: center;       /* Centra verticalmente */
-  gap: 25px;                 /* Espacio entre iconos */
   flex-wrap: wrap;           /* **Cambiado: Permite que los iconos se ajusten si no hay espacio** */
 }
  
 .tech-logos i {
-  font-size: 64px;           /* Tamaño grande para los iconos */
+  font-size: 48px;           /* Tamaño grande para los iconos */
   color: #333;               /* Color (puedes cambiarlo) */
   transition: transform 0.3s; /* Efecto suave si quieres animar */
   cursor: default;
@@ -1151,6 +1151,7 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 .tech-logos i,
 .tech-logo-img {
     animation: pulse 4s infinite;
+    margin: 0 13px;
 }
 
 .tech-logos i:hover,
@@ -1160,7 +1161,7 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
   animation-play-state: paused; /* Pausa la animación al pasar el cursor */
 }
 .tech-logo-img {
-  height: 64px; /* **Igualar la altura al font-size de los íconos Devicon** */
+  height: 48px; /* **Igualar la altura al font-size de los íconos Devicon** */
   width: auto;  /* Para mantener la proporción de la imagen */
   /* El 'gap' del contenedor .tech-logos ya manejará el espaciado entre elementos flex,
      pero puedes añadir margen si necesitas un control más fino. */
@@ -1322,5 +1323,5 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 }
 
 #services {
-    padding-top: 2.5rem;
+    padding-top: 1.5rem;
 }
