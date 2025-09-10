@@ -54,6 +54,7 @@ body {
     padding-top: var(--header-height);
     transition: background-color var(--transition-speed), color var(--transition-speed);
     overflow-x: hidden;
+    zoom: 80%;
 }
 
 body.dark-mode {
