@@ -670,11 +670,14 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 
 .contact-form .cta-button {
     width: 100%;
-    gap: 0.75rem;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 0.75rem;
+    min-height: 48px; /* Set a minimum height */
 }
 
-.contact-form .cta-button.loading span {
+.contact-form .cta-button.loading .button-text {
     display: none;
 }
 
