@@ -432,13 +432,13 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 }
 
 .service-link i {
-    font-size: 0.9em;
-    margin-left: 0.5em;
+    font-size: 0.85em; /* Adjust icon size */
+    margin-left: 0;
     transition: transform 0.3s ease;
 }
 
 .service-card:hover .service-link i {
-    transform: translateX(4px);
+    transform: scale(1.2);
 }
 
 /* Specific adjustments for Projects section to make it more compact */
