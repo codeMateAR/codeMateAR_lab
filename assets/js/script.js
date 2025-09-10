@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Translations Data ---
     const translations = {
         en: {
-            pageTitle: "codeMate AR - Custom Web Solutions",
+            pageTitle: "codeMate AR - Custom Solutions",
             navHome: "Home",
             navServices: "Services",
             navProjects: "Projects",
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // ... other translations
         },
         es: {
-            pageTitle: "codeMate AR - Soluciones Web Personalizadas",
+            pageTitle: "codeMate AR - Soluciones Personalizadas",
             navHome: "Inicio",
             navServices: "Servicios",
             navProjects: "Proyectos",
