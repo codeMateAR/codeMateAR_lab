@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
             footerTerms: "Terms of Service",
             formSuccessMessage: "Your message has been sent successfully!",
             contactTitle: "<i class=\"fas fa-envelope-open-text\"></i> Get in Touch",
-            contactIntro: "Ready to start your next project or have a question? We\'d love to hear from you!",
+            contactIntro: "Ready to start your next project or have a question? We'd love to hear from you!",
             contactLocation: "Location",
             contactEmailLabel: "Email",
             contactPhoneLabel: "Phone",
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
             footerEmail: "info@codeMateAR.com",
             footerRights: "Todos los Derechos Reservados.",
             footerPrivacy: "Política de Privacidad",
-                        footerTerms: "Términos de Servicio",
+            footerTerms: "Términos de Servicio",
             formSuccessMessage: "¡Tu mensaje ha sido enviado con éxito!",
             contactTitle: "<i class=\"fas fa-envelope-open-text\"></i> Ponte en Contacto",
             contactIntro: "¿Listo para comenzar tu próximo proyecto o tienes una pregunta? ¡Nos encantaría saber de ti!",
@@ -329,21 +329,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Smooth Scroll ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default immediately
+
             const href = this.getAttribute('href');
 
             if (href === '#') {
-                e.preventDefault();
                 return;
             }
 
             const targetElement = document.querySelector(href);
             if (targetElement) {
-                e.preventDefault();
                 const headerOffset = mainHeader.offsetHeight;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-                // Remove 'visible' class from all sections to re-trigger animation
                 sections.forEach(section => {
                     section.classList.remove('visible');
                 });
@@ -353,15 +352,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     behavior: 'smooth'
                 });
 
-                // Re-trigger reveal animation after smooth scroll
+                // Call activateNavLink after a short delay to allow scroll to settle
                 setTimeout(() => {
-                    // If navigating to the hero section, force re-animation
+                    activateNavLink(); // Re-evaluate active link after scroll
                     if (href === '#hero') {
                         handleHeroReveal();
                     } else {
                         revealSections();
                     }
-                }, 100); // Small delay to ensure scroll completes
+                }, 200); // Increased delay
             }
         });
     });
@@ -435,7 +434,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     state.textIndex = (state.textIndex + 1) % texts.length;
                     state.timeoutId = setTimeout(type, delay);
                 }
-            } else {
+            }
+            else {
                 if (i < currentText.length) {
                     element.placeholder += currentText.charAt(i);
                     i++;
@@ -547,4 +547,29 @@ document.addEventListener('DOMContentLoaded', () => {
             revealSections(); // Ensure other sections are also handled if they become visible
         }
     });
+
+    // --- Highlight Nav on Scroll ---
+    const scrollSpySections = document.querySelectorAll('section[id]');
+    const mainNavLinks = document.querySelectorAll('header nav a');
+
+    const activateNavLink = () => {
+        let currentSection = '';
+
+        scrollSpySections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - (mainHeader.offsetHeight + 5)) { // Use dynamic header height + buffer
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        mainNavLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === currentSection) {
+                link.classList.add('active');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', activateNavLink);
+    activateNavLink(); // Initial check
 });
