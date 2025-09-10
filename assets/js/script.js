@@ -10,6 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section:not(.stats-bar-section)');
     const contactForm = document.getElementById('contact-form');
 
+    // Debounce function to limit how often a function can run
+    function debounce(func, delay) {
+        let timeout;
+        return function(...args) {
+            const context = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), delay);
+        };
+    }
+
     // --- Date and Temperature Display ---
     const dateTempDisplay = document.getElementById('date-temp-display');
 
@@ -92,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             aboutFeature2Desc: "Our commitment to quality ensures robust and reliable products.",
             aboutFeature3Title: "Collaboration",
             aboutFeature3Desc: "We work closely with our clients to achieve shared success.",
-            techTitle: "Technologies We Use",
+            techTitle: "Tecnologías que Utilizamos",
             contactFormName: "Your Name",
             contactFormEmail: "Your Email",
             contactFormMessage: "Your Message",
@@ -326,6 +336,49 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     window.addEventListener('scroll', revealSections, { passive: true });
 
+    // --- Highlight Nav on Scroll ---
+    const scrollSpySections = document.querySelectorAll('section[id]');
+    const mainNavLinks = document.querySelectorAll('header nav a');
+
+    const activateNavLink = () => {
+        let currentSectionId = '';
+        const headerHeight = mainHeader.offsetHeight;
+        const activationLine = headerHeight + 5; // A few pixels below the header
+
+        // Iterate sections from top to bottom
+        for (let i = 0; i < scrollSpySections.length; i++) {
+            const section = scrollSpySections[i];
+            const rect = section.getBoundingClientRect();
+
+            // If the top of the section is at or above the activation line,
+            // and the bottom of the section is below the activation line,
+            // then this section is currently crossing the activation line.
+            if (rect.top <= activationLine && rect.bottom > activationLine) {
+                currentSectionId = section.getAttribute('id');
+                break; // Found the active section, exit loop
+            }
+        }
+
+        // If no section is active (e.g., at the very top of the page before the first section)
+        // default to the first link (Home/Hero)
+        if (!currentSectionId && mainNavLinks.length > 0) {
+            currentSectionId = mainNavLinks[0].getAttribute('href').substring(1);
+        }
+
+        mainNavLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === currentSectionId) {
+                link.classList.add('active');
+            }
+        });
+    };
+
+    // Debounced version of activateNavLink
+    const debouncedActivateNavLink = debounce(activateNavLink, 100);
+
+    window.addEventListener('scroll', debouncedActivateNavLink);
+    debouncedActivateNavLink(); // Initial check
+
     // --- Smooth Scroll ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -355,8 +408,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     behavior: 'smooth'
                 });
 
-                // No setTimeout here. Rely on the scroll event listener to activateNavLink
-                // once the smooth scroll has completed and the browser fires scroll events.
+                // Call activateNavLink after a short delay to ensure it runs after scroll settles
+                setTimeout(() => {
+                    activateNavLink();
+                }, 250); // Adjust delay as needed
+
                 if (href === '#hero') {
                     handleHeroReveal();
                 } else {
@@ -548,39 +604,4 @@ document.addEventListener('DOMContentLoaded', () => {
             revealSections(); // Ensure other sections are also handled if they become visible
         }
     });
-
-    // --- Highlight Nav on Scroll ---
-    const scrollSpySections = document.querySelectorAll('section[id]');
-    const mainNavLinks = document.querySelectorAll('header nav a');
-
-    const activateNavLink = () => {
-        let currentSectionId = '';
-        const headerHeight = mainHeader.offsetHeight;
-
-        scrollSpySections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            // Check if the section is within the viewport, considering the header
-            // A section is considered active if its top is above the bottom of the header
-            // and its bottom is below the top of the header.
-            if (rect.top <= headerHeight && rect.bottom > headerHeight) {
-                currentSectionId = section.getAttribute('id');
-            }
-        });
-
-        // If no section is active (e.g., at the very top of the page before the first section)
-        // default to the first link (Home/Hero)
-        if (!currentSectionId && mainNavLinks.length > 0) {
-            currentSectionId = mainNavLinks[0].getAttribute('href').substring(1);
-        }
-
-        mainNavLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === currentSectionId) {
-                link.classList.add('active');
-            }
-        });
-    };
-
-    window.addEventListener('scroll', activateNavLink);
-    activateNavLink(); // Initial check
 });
