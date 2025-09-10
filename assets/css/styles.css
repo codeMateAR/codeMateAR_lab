@@ -448,11 +448,11 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 }
 
 #projects h2 {
-    margin-bottom: 2.0rem; /* Reducido */
+    margin-bottom: 1.0rem; /* Reducido */
 }
 
 #projects .section-intro {
-    margin-bottom: 3.0rem; /* Reducido */
+    margin-bottom: 1.0rem; /* Reducido */
 }
 
 /* Projects Grid */
@@ -492,7 +492,7 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    height: 150px; /* Add fixed height */
+    height: 200px; /* Add fixed height */
 }
 .project-info h3 {
     margin-bottom: 0.75rem;
