@@ -340,27 +340,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(href);
             if (targetElement) {
                 const headerOffset = mainHeader.offsetHeight;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;
 
                 sections.forEach(section => {
                     section.classList.remove('visible');
                 });
+
+                // Remove active class from all links and add to the clicked one immediately
+                mainNavLinks.forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
 
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
 
-                // Call activateNavLink after a short delay to allow scroll to settle
-                setTimeout(() => {
-                    activateNavLink(); // Re-evaluate active link after scroll
-                    if (href === '#hero') {
-                        handleHeroReveal();
-                    } else {
-                        revealSections();
-                    }
-                }, 200); // Increased delay
+                // No setTimeout here. Rely on the scroll event listener to activateNavLink
+                // once the smooth scroll has completed and the browser fires scroll events.
+                if (href === '#hero') {
+                    handleHeroReveal();
+                } else {
+                    revealSections();
+                }
             }
         });
     });
@@ -553,18 +554,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainNavLinks = document.querySelectorAll('header nav a');
 
     const activateNavLink = () => {
-        let currentSection = '';
+        let currentSectionId = '';
+        const headerHeight = mainHeader.offsetHeight;
 
         scrollSpySections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - (mainHeader.offsetHeight + 5)) { // Use dynamic header height + buffer
-                currentSection = section.getAttribute('id');
+            const rect = section.getBoundingClientRect();
+            // Check if the section is within the viewport, considering the header
+            // A section is considered active if its top is above the bottom of the header
+            // and its bottom is below the top of the header.
+            if (rect.top <= headerHeight && rect.bottom > headerHeight) {
+                currentSectionId = section.getAttribute('id');
             }
         });
 
+        // If no section is active (e.g., at the very top of the page before the first section)
+        // default to the first link (Home/Hero)
+        if (!currentSectionId && mainNavLinks.length > 0) {
+            currentSectionId = mainNavLinks[0].getAttribute('href').substring(1);
+        }
+
         mainNavLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === currentSection) {
+            if (link.getAttribute('href').substring(1) === currentSectionId) {
                 link.classList.add('active');
             }
         });

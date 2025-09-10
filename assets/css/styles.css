@@ -227,7 +227,7 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 
 /* Hero Section */
 .hero-section {
-    min-height: 65vh; /* Reducido para que la barra de estadísticas sea visible */
+    min-height: 80vh; /* Increased for a larger hero section */
     display: flex; align-items: center; justify-content: center; text-align: center;
     padding: 4rem 1rem;
     background-image: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'); /* Replace with your hero image */
@@ -283,13 +283,13 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 .stats-bar-section {
     background-color: var(--primary-color);
     color: #fff;
-    padding: 0.5rem 0; /* Reducido para un aspecto más compacto */
+    padding: 0.3rem 0; /* Further reduced for a more compact look */
 }
 .stats-container { display: flex; justify-content: space-around; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem; }
 .stat-item { text-align: center; flex: 1; min-width: 180px; }
-.stat-item i { font-size: 2.8rem; margin-bottom: 0.75rem; opacity: 0.8; display: block; }
-.stat-item h3 { font-size: 2.5rem; margin-bottom: 0.25rem; color: #fff; font-weight: 700; }
-.stat-item p { font-size: 0.9rem; margin-bottom: 0; color: #f0f0f0; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-item i { font-size: 2.2rem; margin-bottom: 0.5rem; opacity: 0.8; display: block; }
+.stat-item h3 { font-size: 2.0rem; margin-bottom: 0.15rem; color: #fff; font-weight: 700; }
+.stat-item p { font-size: 0.8rem; margin-bottom: 0; color: #f0f0f0; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; }
 
 
 /* Sections with flex/grid */
