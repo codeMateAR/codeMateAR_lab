@@ -54,7 +54,7 @@ body {
     padding-top: var(--header-height);
     transition: background-color var(--transition-speed), color var(--transition-speed);
     overflow-x: hidden;
-    zoom: 80%;
+    zoom: 83%;
 }
 
 body.dark-mode {
@@ -1319,4 +1319,8 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 
 .feature-item:hover h4 {
     color: var(--accent-color);
+}
+
+#services {
+    padding-top: 2.5rem;
 }
