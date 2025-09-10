@@ -443,7 +443,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // --- Loading State ---
             submitButton.classList.add('loading');
             submitButton.disabled = true;
-            formMessage.style.display = 'none';
 
             // --- Simulate API Call ---
             setTimeout(() => {
@@ -453,8 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // --- Show Success Message ---
                 formMessage.textContent = translations[document.documentElement.lang].formSuccessMessage || 'Your message has been sent successfully!';
-                formMessage.className = 'success';
-                formMessage.style.display = 'block';
+                formMessage.className = 'visible success';
 
                 // --- Reset Form ---
                 contactForm.reset();
@@ -465,7 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // --- Hide Message After 5s and Restart Animation ---
                 setTimeout(() => {
-                    formMessage.style.display = 'none';
+                    formMessage.className = '';
                     startTypingAnimation();
                 }, 5000);
 

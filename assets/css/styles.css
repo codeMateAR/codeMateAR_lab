@@ -628,6 +628,10 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
     text-align: center;
 }
 
+.contact-form-col {
+    position: relative;
+}
+
 .form-group {
     position: relative;
     margin-bottom: 1.5rem; /* Reduced for a more compact form */
@@ -699,22 +703,35 @@ body.dark-mode #main-header:not(.scrolled) nav a::after { background-color: #fff
 }
 
 #form-message {
-    margin-top: 1rem;
-    padding: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
     border-radius: var(--border-radius);
-    display: none;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#form-message.visible {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 #form-message.success {
-    background-color: #d4edda;
     color: #155724;
-    display: block;
 }
 
 #form-message.error {
-    background-color: #f8d7da;
     color: #721c24;
-    display: block;
 }
 
 .contact-form .cta-button:hover {
